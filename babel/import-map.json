@@ -1,0 +1,10 @@
+{
+  "rootDir": "/apps/",
+  "aliases": {
+    "^@tiptap/(.*)":  "websight-atlaskit-esm/web-resources/@tiptap/\\1.js",
+    "react": "websight-atlaskit-esm/web-resources/react.js",
+    "react-dom": "websight-atlaskit-esm/web-resources/react-dom.js"
+  },
+  "devAliases": {
+  }
+}
