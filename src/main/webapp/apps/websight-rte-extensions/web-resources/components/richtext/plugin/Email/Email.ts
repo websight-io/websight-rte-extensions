@@ -1,20 +1,18 @@
-import EmailCore from "./extension-email.js";
+import CustomEmail from "./extension-email.js";
+import { splitEmail } from "./helpers/splitEmail.js";
+import { validateEmail } from "./helpers/validateEmail.js";
 
 const Email = () => ({
-    getTipTapExtensions: () => [EmailCore.configure({
-        openOnClick: false
-      })],
+    getTipTapExtensions: () => [CustomEmail],
       getAction: ({
         editor
       }) => ({
-        execute: ({
-          href,
-          target
-        }) => {
-          if (href) {
+        execute: ({href, target}) => {
+          if (validateEmail(href)) {
             editor.chain().focus().extendMarkRange('email').setEmail({
               href,
-              target
+              target,
+              ...splitEmail(href)
             }).run();
           } else {
             editor.chain().focus().extendMarkRange('email').unsetEmail().run();

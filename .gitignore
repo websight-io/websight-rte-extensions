@@ -2,6 +2,7 @@
 /.idea/
 .classpath
 .settings/
+.history
 
 # Based on https://www.gitignore.io/api/node,react,macos,maven,intellij,intellij+iml
 
