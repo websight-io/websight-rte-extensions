@@ -1,6 +1,6 @@
 import Link from '@tiptap/extension-link';
-import { mergeAttributes } from '@tiptap/core';
-import { splitEmail } from './helpers/splitEmail';
+import { mergeAttributes, PasteRule, markPasteRule } from '@tiptap/core';
+import { splitEmail } from './helpers/splitEmail.js';
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
@@ -24,7 +24,7 @@ const CustomEmail = Link.extend({
     return {
       openOnClick: false,
       linkOnPaste: false,
-      autolink: true,
+      autolink: false,
       protocols: [],
       validate: undefined,
       HTMLAttributes: {

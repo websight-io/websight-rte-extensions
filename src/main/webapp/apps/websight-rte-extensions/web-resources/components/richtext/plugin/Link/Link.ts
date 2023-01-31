@@ -1,10 +1,7 @@
 import CustomLink from './extension-link.js';
 
 const Link = () => ({
-  getTipTapExtensions: () => [CustomLink.configure({
-    openOnClick: false,
-    linkOnPaste: false
-  })],
+  getTipTapExtensions: () => [CustomLink.configure({autolink: false, linkOnPaste: false})],
   getAction: ({
     editor
   }) => ({
