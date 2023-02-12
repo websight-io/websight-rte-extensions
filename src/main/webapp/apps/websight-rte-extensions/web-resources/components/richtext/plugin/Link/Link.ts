@@ -1,7 +1,10 @@
+import { validateEmail } from '../Email/helpers/validateEmail.js';
 import CustomLink from './extension-link.js';
 
 const Link = () => ({
-  getTipTapExtensions: () => [CustomLink.configure({autolink: false, linkOnPaste: false})],
+  getTipTapExtensions: () => [CustomLink.configure({validate(url) {
+      return !validateEmail(url);
+  },})],
   getAction: ({
     editor
   }) => ({

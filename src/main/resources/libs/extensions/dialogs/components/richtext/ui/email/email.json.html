@@ -1,0 +1,12 @@
+{
+    "type": "/apps/websight-rte-extensions/web-resources/components/richtext/ui/EmailDialog.js",
+    "configuration": {
+        "title": "${properties.title}",
+        "icon": "${properties.icon}"
+    }
+    <sly data-sly-list="${resource.children}">
+        <sly data-sly-test="itemList.first">,
+            "plugin": <sly data-sly-resource="${item}"></sly>
+        </sly>
+    </sly>
+}

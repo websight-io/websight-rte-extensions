@@ -14,7 +14,7 @@ prepareAliasesMapForDevelopment = () => {
   const { aliases, devAliases } = importMap;
 
   Object.keys(devAliases).forEach((devKey) =>
-      Object.keys(aliases)
+    Object.keys(aliases)
       .filter((key) => aliases[key].includes(devKey))
       .forEach((key) => aliases[key] = aliases[key].replace(devKey, devAliases[devKey]))
   );
@@ -35,14 +35,16 @@ module.exports = (api) => {
 
   return {
     presets: [
-      "@babel/preset-typescript",
+      "@babel/preset-react", "@babel/preset-typescript"
     ],
     plugins: [
       [ "module-resolver", {
         loglevel: 'silent',
         alias: aliases,
-      }]
-    ],
-    ignore: ["**/*.d.ts"]
+      }],
+      ["transform-react-remove-prop-types", {
+        removeImport: true,
+      }],
+    ]
   };
 }

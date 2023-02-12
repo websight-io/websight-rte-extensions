@@ -6,16 +6,26 @@
     "watch": "babel ./src/main/webapp/ --config-file ./babel/.babelrc.js --extensions \".ts,.tsx\" -d target/dist --copy-files --watch"
   },
   "dependencies": {
+    "@atlaskit/button": "^16.5.5",
+    "@atlaskit/textfield": "^5.3.5",
     "@tiptap/core": "^2.0.0-beta.209",
-    "@tiptap/extension-link": "^2.0.0-beta.209"
+    "@tiptap/extension-link": "^2.0.0-beta.209",
+    "@tiptap/pm": "^2.0.0-beta.215",
+    "@types/react": "^18.0.28",
+    "prop-types": "15.8.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "styled-components": "3.2.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "7.7.7",
     "@babel/preset-env": "^7.18.2",
-    "@babel/preset-typescript": "^7.16.0",
+    "@babel/preset-react": "7.8.3",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@babel/preset-typescript": "^7.16.0",
     "babel-plugin-module-resolver": "^5.0.0",
+    "babel-plugin-transform-react-remove-prop-types": "0.4.24",
     "concurrently": "5.1.0",
     "cross-env": "^7.0.2",
     "csstype": "^3.1.1",

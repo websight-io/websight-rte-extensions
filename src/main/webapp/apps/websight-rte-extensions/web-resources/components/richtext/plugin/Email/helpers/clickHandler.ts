@@ -1,19 +1,21 @@
 import { getAttributes } from '@tiptap/core';
-import prose from 'prosemirror-state';
+import { Plugin, PluginKey } from '@tiptap/pm/state';
 
 export function clickHandler(options: { type: any; }) {
-  return new prose.Plugin({
-    key: new prose.PluginKey('handleClickEmail'),
+  return new Plugin({
+    key: new PluginKey('handleClickEmail'),
     props: {
       handleClick: (view, pos, event) => {
+        console.log('handleClick:', view, event.target);
         const attrs = getAttributes(view.state, options.type.name);
-        const link = (event.target as HTMLElement)?.closest('a');
+        console.log(attrs);
+        // const link = (event.target as HTMLElement)?.closest('a');
 
-        if (link && attrs.href) {
-          window.open(attrs.href, attrs.target);
+        // if (link && attrs.href) {
+        //   window.open(attrs.href, attrs.target);
 
-          return true;
-        }
+        //   return true;
+        // }
 
         return false;
       },

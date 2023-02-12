@@ -3,16 +3,15 @@ import { splitEmail } from "./helpers/splitEmail.js";
 import { validateEmail } from "./helpers/validateEmail.js";
 
 const Email = () => ({
-    getTipTapExtensions: () => [CustomEmail],
+    getTipTapExtensions: () => [CustomEmail.configure({autolink: false, linkOnPaste: false})],
       getAction: ({
         editor
       }) => ({
-        execute: ({href, target}) => {
-          if (validateEmail(href)) {
+        execute: ({hrefDecoded}) => {
+          if (validateEmail(hrefDecoded)) {
             editor.chain().focus().extendMarkRange('email').setEmail({
-              href,
-              target,
-              ...splitEmail(href)
+              hrefDecoded,
+              ...splitEmail(hrefDecoded)
             }).run();
           } else {
             editor.chain().focus().extendMarkRange('email').unsetEmail().run();

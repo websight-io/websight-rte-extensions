@@ -9,7 +9,7 @@ const CustomLink = Link.extend({
     addOptions() {
         return {
           openOnClick: false,
-          linkOnPaste: false,
+          linkOnPaste: true,
           autolink: false,
           protocols: [],
           HTMLAttributes: {
