@@ -25,6 +25,7 @@ const CustomEmail = Mark.create({
     return {
       linkOnPaste: false,
       autolink: false,
+      validate: undefined,
       HTMLAttributes: {
         rel: 'noopener noreferrer nofollow',
         class: null,
