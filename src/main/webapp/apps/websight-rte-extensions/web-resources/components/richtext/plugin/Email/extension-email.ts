@@ -1,5 +1,9 @@
-import Link from '@tiptap/extension-link';
-import { mergeAttributes } from '@tiptap/core';
+import {  markPasteRule, mergeAttributes, Mark } from '@tiptap/core';
+import { autolink } from './helpers/autolink.js';
+import { pasteHandler } from './helpers/pasteHandler.js';
+import { find, reset } from 'linkifyjs';
+import { Plugin } from '@tiptap/pm/state';
+import { splitEmail } from './helpers/splitEmail.js';
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     email: {
@@ -14,15 +18,13 @@ declare module '@tiptap/core' {
   }
 }
 
-const CustomEmail = Link.extend({
+const CustomEmail = Mark.create({
   name: 'email',
+  priority: 1000,
   addOptions() {
     return {
-      openOnClick: false,
       linkOnPaste: false,
       autolink: false,
-      protocols: [],
-      validate: undefined,
       HTMLAttributes: {
         rel: 'noopener noreferrer nofollow',
         class: null,
@@ -31,6 +33,12 @@ const CustomEmail = Link.extend({
         'data-part3': null
       }
     };
+  },
+  onDestroy() {
+    reset();
+  },
+  inclusive() {
+    return this.options.autolink;
   },
   addAttributes() {
     return {
@@ -84,6 +92,52 @@ const CustomEmail = Link.extend({
           .run();
       },
     };
+  },
+  addPasteRules() {
+    return [
+      markPasteRule({
+        find: text => find(text, 'email')
+          .filter(email => {
+            if (this.options.validate) {
+              return this.options.validate(email.value);
+            }
+
+            return true;
+          })
+          .filter(email => email.isLink)
+          .map(email => ({
+            text: email.value,
+            index: email.start,
+            data: email,
+          })),
+        type: this.type,
+        getAttributes: match => (splitEmail(match.data?.href)),
+      }),
+    ]
+  },
+
+  addProseMirrorPlugins() {
+    const plugins: Plugin[] = [];
+
+    if (this.options.autolink) {
+      plugins.push(
+        autolink({
+          type: this.type,
+          validate: this.options.validate,
+        }),
+      );
+    }
+
+    if (this.options.linkOnPaste) {
+      plugins.push(
+        pasteHandler({
+          editor: this.editor,
+          type: this.type,
+        }),
+      );
+    }
+
+    return plugins;
   },
 });
 

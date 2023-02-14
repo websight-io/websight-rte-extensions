@@ -1,6 +1,9 @@
 {
   "rootDir": "/apps/",
   "aliases": {
+    "linkifyjs": "websight-rte-extensions/web-resources/linkifyjs.js",
+    "prosemirror-state": "websight-rte-extensions/web-resources/prosemirror-state.js",
+    "prosemirror-model": "websight-rte-extensions/web-resources/prosemirror-model.js",
     "^(components.*)":  "websight-dialogs-view/web-resources/\\1.js",
     "^(.*)":  "websight-atlaskit-esm/web-resources/\\1.js"
   },

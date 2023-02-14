@@ -3,7 +3,7 @@ import { splitEmail } from "./helpers/splitEmail.js";
 import { validateEmail } from "./helpers/validateEmail.js";
 
 const Email = () => ({
-    getTipTapExtensions: () => [CustomEmail.configure({autolink: false, linkOnPaste: false})],
+    getTipTapExtensions: () => [CustomEmail.configure({autolink: true, linkOnPaste: true})],
       getAction: ({
         editor
       }) => ({
