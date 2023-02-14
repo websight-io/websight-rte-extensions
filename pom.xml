@@ -26,10 +26,9 @@
   </properties>
 
   <scm>
-    <connection>scm:git:ssh://git@github.com:websight-io/websight-rte-extensions.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:websight-io/websight-rte-extensions.git
-    </developerConnection>
-    <url>https://github.com:websight-io/websight-rte-extensions.git</url>
+    <connection>scm:git:git://github.com/websight-io/websight-rte-extensions.git</connection>
+    <developerConnection>scm:git:git@github.com:websight-io/websight-rte-extensions.git</developerConnection>
+    <url>https://github.com/websight-io/websight-rte-extensions</url>
     <tag>HEAD</tag>
   </scm>
 
