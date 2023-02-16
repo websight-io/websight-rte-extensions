@@ -75,7 +75,7 @@ EmailDialogContent.propTypes = {
 
 const EmailDialog = ({ configuration, state, action }) => {
     const { title, icon } = configuration;
-    const { isActive, 'data-part1': part1, 'data-part3': part2, 'data-part3': part3 } = state;
+    const { isActive, 'data-part1': part1, 'data-part2': part2, 'data-part3': part3 } = state;
     const { execute } = action;
 
     const dialogRef = React.createRef();
