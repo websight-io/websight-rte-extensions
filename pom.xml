@@ -5,7 +5,7 @@
   <groupId>io.websight</groupId>
   <artifactId>websight-rte-extensions</artifactId>
   <name>WebSight RTE Extensions</name>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3</version>
 
   <properties>
     <websight.admin.username>wsadmin</websight.admin.username>
@@ -29,7 +29,7 @@
     <connection>scm:git:git://github.com/websight-io/websight-rte-extensions.git</connection>
     <developerConnection>scm:git:git@github.com:websight-io/websight-rte-extensions.git</developerConnection>
     <url>https://github.com/websight-io/websight-rte-extensions</url>
-    <tag>HEAD</tag>
+    <tag>v0.0.3</tag>
   </scm>
 
   <organization>
