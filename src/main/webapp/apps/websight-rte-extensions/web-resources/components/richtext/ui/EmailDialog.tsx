@@ -20,16 +20,18 @@ import styled from 'styled-components';
 import AtlaskitButton, { ButtonGroup } from '@atlaskit/button';
 import TextField from '@atlaskit/textfield';
 
-import Dialog from 'components/richtext/ui/InlineDialog';
+import Popup from 'components/richtext/ui/Popup';
 import Button from 'components/richtext/ui/Button';
 
 const DialogContainer = styled.div`
+    padding: 16px;
     & > div {
         margin-top: 8px;
     }
 `;
 
 const DialogFooter = styled.div`
+    padding-top: 8px;
     float: right;
 `;
 
@@ -105,7 +107,7 @@ const EmailDialog = ({ configuration, state, action }) => {
     };
 
     const open = () => {
-        dialogRef.current.open();
+        dialogRef.current.toggle();
     };
 
     const onSubmit = (params) => {
@@ -114,7 +116,7 @@ const EmailDialog = ({ configuration, state, action }) => {
     };
 
      return (
-        <Dialog
+        <Popup
             ref={dialogRef}
             content={
                 <EmailDialogContent
@@ -128,7 +130,7 @@ const EmailDialog = ({ configuration, state, action }) => {
                 state={{ isActive }}
                 action={{ execute: open }}
             />
-        </Dialog>
+        </Popup>
      );
 };
 
