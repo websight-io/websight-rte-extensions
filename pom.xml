@@ -5,7 +5,7 @@
   <groupId>io.websight</groupId>
   <artifactId>websight-rte-extensions</artifactId>
   <name>WebSight RTE Extensions</name>
-  <version>0.0.5-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
 
   <properties>
     <websight.admin.username>wsadmin</websight.admin.username>
