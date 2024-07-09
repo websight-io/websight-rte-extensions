@@ -30,12 +30,19 @@ const CustomLink = Link.extend({
           protocols: [],
           HTMLAttributes: {
             target: '_blank',
-            rel: 'noopener noreferrer nofollow',
             class: null,
           },
           validate: undefined,
         };
       },
+    addAttributes() {
+      return {
+        ...this.parent?.(),
+        rel: {
+          default: 'noopener noreferrer nofollow',
+        },
+      };
+    },
 });
 
 export default CustomLink;
