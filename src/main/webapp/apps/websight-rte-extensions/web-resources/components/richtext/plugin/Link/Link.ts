@@ -17,15 +17,6 @@
 import { validateEmail } from '../Email/helpers/validateEmail.js';
 import CustomLink from './extension-link.js';
 
-function isInternal(link: string) {
-  if (link.startsWith('/') || link.startsWith('#')) {
-    return true;
-  }
-  const linkHost = new URL(link).hostname;
-  const pageHost = window.location.hostname;
-  return linkHost === pageHost;
-}
-
 const Link = () => ({
   getTipTapExtensions: () => [CustomLink.configure({validate(url) {
       return !validateEmail(url);
@@ -38,19 +29,10 @@ const Link = () => ({
       target
     }) => {
       if (href) {
-        if (isInternal(href)) {
-          editor.chain().focus().extendMarkRange('link').setLink({
-            href,
-            target
-          }).updateAttributes('link', {
-            rel: 'follow',
-          }).run();
-        } else {
-          editor.chain().focus().extendMarkRange('link').setLink({
-            href,
-            target
-          }).run();
-        }
+        editor.chain().focus().extendMarkRange('link').setLink({
+          href,
+          target
+        }).run();
       } else {
         editor.chain().focus().extendMarkRange('link').unsetLink().run();
       }
